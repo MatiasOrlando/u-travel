@@ -1,10 +1,11 @@
-import { StyleSheet, Text, View, FlatList } from "react-native";
+import { StyleSheet, Text, View, FlatList, Pressable } from "react-native";
 import React, { useState, useEffect } from "react";
-import fakeCountries from "../../data/fakeCountries.json";
+import fakeCountries from "../../../data/fakeCountries.json";
 import FormInput from "@/components/FormInput";
 import { colorsDefault } from "@/constants/Colors";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import CardCountry from "@/components/CardCountry";
+import { router } from "expo-router";
 
 const explore = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -28,12 +29,24 @@ const explore = () => {
             color={colorsDefault.brown.default}
             onChangeValue={setSearchTerm}
             icon={<TabBarIcon name="search" size={24} />}
+            placeholder="Search a country..."
           />
         </View>
         <View>
           <FlatList
             data={searchQuery}
-            renderItem={({ item }) => <CardCountry {...item} />}
+            renderItem={({ item }) => (
+              <Pressable
+                onPress={() =>
+                  router.push({
+                    pathname: "/explore/[cities]",
+                    params: { id: item.country },
+                  })
+                }
+              >
+                <CardCountry {...item} />
+              </Pressable>
+            )}
             keyExtractor={({ country }) => country}
             numColumns={2}
             columnWrapperStyle={{

@@ -24,6 +24,7 @@ const FormInput: React.FC<FormInputProps> = ({
   icon,
   additionalText,
   onChangeValue,
+  ...rest
 }) => {
   const renderIcon = () => {
     if (React.isValidElement(icon)) {
@@ -57,6 +58,7 @@ const FormInput: React.FC<FormInputProps> = ({
             { paddingTop: additionalText === "emailIcon" ? 6 : 13 },
           ]}
           onChangeText={onChangeValue}
+          {...rest}
         />
         {renderIcon()}
         {additionalText && additionalText != "emailIcon" && (

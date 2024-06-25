@@ -9,12 +9,14 @@ export interface Activity {
 
 export interface CityItinerary {
   city: string;
+  cityImage?: string;
   activities: Activity[];
 }
 
 export interface CountryItinerary {
   country: string;
   countryImage: string;
+  countryCartoon?: string;
   itinerary: CityItinerary[];
 }
 

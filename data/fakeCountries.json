@@ -6,6 +6,7 @@
       "itinerary": [
         {
           "city": "Tokyo",
+          "cityImage": "https://cdn.pixabay.com/photo/2020/01/31/07/23/tokyo-4807294_1280.jpg",
           "activities": [
             { "name": "Visit Tokyo Tower", "type": "sightseeing", "interests": ["architecture", "history"], "ageRange": "all ages", "budget": "$$", "groupType": "all" },
             { "name": "Explore Akihabara", "type": "shopping", "interests": ["electronics", "anime"], "ageRange": "teens, adults", "budget": "$$", "groupType": "solo, friends, couple" },
@@ -16,6 +17,7 @@
         },
         {
           "city": "Kyoto",
+          "cityImage": "https://images.unsplash.com/photo-1624253321171-1be53e12f5f4?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "activities": [
             { "name": "Visit Kinkaku-ji", "type": "sightseeing", "interests": ["culture", "history"], "ageRange": "all ages", "budget": "$", "groupType": "all" },
             { "name": "Tea Ceremony Experience", "type": "cultural", "interests": ["tradition", "food"], "ageRange": "adults", "budget": "$$", "groupType": "couple, solo" },
@@ -26,6 +28,7 @@
         },
         {
           "city": "Osaka",
+          "cityImage": "https://images.unsplash.com/photo-1589452271712-64b8a66c7b71?q=80&w=2971&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "activities": [
             { "name": "Osaka Castle", "type": "sightseeing", "interests": ["history", "architecture"], "ageRange": "all ages", "budget": "$", "groupType": "all" },
             { "name": "Dotonbori District", "type": "shopping", "interests": ["food", "urban life"], "ageRange": "teens, adults", "budget": "$$", "groupType": "all" },
@@ -42,6 +45,7 @@
       "itinerary": [
         {
           "city": "Rome",
+          "cityImage": "https://images.unsplash.com/photo-1552832230-c0197dd311b5?q=80&w=2896&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "activities": [
             { "name": "Colosseum Tour", "type": "sightseeing", "interests": ["history", "architecture"], "ageRange": "all ages", "budget": "$$", "groupType": "all" },
             { "name": "Vatican Museums", "type": "museum", "interests": ["art", "history"], "ageRange": "teens, adults", "budget": "$$", "groupType": "all" },
@@ -52,6 +56,7 @@
         },
         {
           "city": "Florence",
+          "cityImage": "https://images.unsplash.com/photo-1526721360960-dd1fca4f5148?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "activities": [
             { "name": "Uffizi Gallery", "type": "museum", "interests": ["art", "history"], "ageRange": "teens, adults", "budget": "$$", "groupType": "all" },
             { "name": "Ponte Vecchio Walk", "type": "sightseeing", "interests": ["scenery", "shopping"], "ageRange": "all ages", "budget": "$", "groupType": "all" },
@@ -62,6 +67,7 @@
         },
         {
           "city": "Venice",
+          "cityImage": "https://images.unsplash.com/photo-1558271736-cd043ef2e855?q=80&w=3131&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "activities": [
             { "name": "Gondola Ride", "type": "sightseeing", "interests": ["romance", "scenery"], "ageRange": "all ages", "budget": "$$$", "groupType": "couple, family" },
             { "name": "St. Mark's Basilica", "type": "sightseeing", "interests": ["architecture", "religion"], "ageRange": "all ages", "budget": "$$", "groupType": "all" },
@@ -78,6 +84,7 @@
       "itinerary": [
         {
           "city": "Sydney",
+          "cityImage": "https://images.unsplash.com/photo-1516941064643-74aacd84843c?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "activities": [
             { "name": "Sydney Opera House Tour", "type": "sightseeing", "interests": ["architecture", "performing arts"], "ageRange": "all ages", "budget": "$$", "groupType": "all" },
             { "name": "Bondi Beach", "type": "outdoor", "interests": ["beach", "surfing"], "ageRange": "all ages", "budget": "$", "groupType": "all" },
@@ -88,6 +95,7 @@
         },
         {
           "city": "Melbourne",
+          "cityImage": "https://images.unsplash.com/photo-1545044846-351ba102b6d5?q=80&w=3174&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "activities": [
             { "name": "Great Ocean Road", "type": "road trip", "interests": ["scenery", "adventure"], "ageRange": "all ages", "budget": "$$", "groupType": "all" },
             { "name": "Melbourne Zoo", "type": "outdoor", "interests": ["animals", "nature"], "ageRange": "kids, teens, adults", "budget": "$$", "groupType": "family, friends" },
@@ -98,6 +106,7 @@
         },
         {
           "city": "Brisbane",
+          "cityImage": "https://images.unsplash.com/photo-1617364799141-3f2d5c0d89b0?q=80&w=2951&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "activities": [
             { "name": "Lone Pine Koala Sanctuary", "type": "nature", "interests": ["wildlife", "conservation"], "ageRange": "all ages", "budget": "$$", "groupType": "family, friends" },
             { "name": "Story Bridge Adventure Climb", "type": "adventure", "interests": ["views", "thrill"], "ageRange": "teens, adults", "budget": "$$", "groupType": "all" },
@@ -114,6 +123,7 @@
       "itinerary": [
         {
           "city": "Vancouver",
+          "cityImage": "https://images.unsplash.com/photo-1544161513-0179fe746fd5?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "activities": [
             { "name": "Stanley Park", "type": "outdoor", "interests": ["nature", "cycling"], "ageRange": "all ages", "budget": "$", "groupType": "all" },
             { "name": "Granville Island", "type": "shopping", "interests": ["local products", "food"], "ageRange": "all ages", "budget": "$", "groupType": "all" },
@@ -124,6 +134,7 @@
         },
         {
           "city": "Toronto",
+          "cityImage": "https://images.unsplash.com/photo-1470181942237-78ce33fec141?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "activities": [
             { "name": "CN Tower", "type": "sightseeing", "interests": ["architecture", "views"], "ageRange": "all ages", "budget": "$$", "groupType": "all" },
             { "name": "Ripley's Aquarium", "type": "indoor", "interests": ["marine life"], "ageRange": "kids, teens, adults", "budget": "$$", "groupType": "family, friends" },
@@ -134,6 +145,7 @@
         },
         {
           "city": "Montreal",
+          "cityImage": "https://images.unsplash.com/photo-1532299039866-065669a2d5df?q=80&w=3076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "activities": [
             { "name": "Old Montreal", "type": "sightseeing", "interests": ["history", "culture"], "ageRange": "all ages", "budget": "$", "groupType": "all" },
             { "name": "Mont Royal Park", "type": "outdoor", "interests": ["nature", "hiking"], "ageRange": "all ages", "budget": "$", "groupType": "all" },
@@ -150,6 +162,7 @@
       "itinerary": [
         {
           "city": "Rio de Janeiro",
+          "cityImage": "https://images.unsplash.com/photo-1589394760151-b4c9890765fe?q=80&w=1748&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "activities": [
             { "name": "Christ the Redeemer", "type": "sightseeing", "interests": ["culture", "architecture"], "ageRange": "all ages", "budget": "$$", "groupType": "all" },
             { "name": "Copacabana Beach", "type": "outdoor", "interests": ["beach", "sunbathing"], "ageRange": "all ages", "budget": "$", "groupType": "all" },
@@ -160,6 +173,7 @@
         },
         {
           "city": "São Paulo",
+          "cityImage": "https://images.unsplash.com/photo-1523214496-759e60a282d6?q=80&w=1674&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "activities": [
             { "name": "Ibirapuera Park", "type": "outdoor", "interests": ["nature", "walking"], "ageRange": "all ages", "budget": "$", "groupType": "all" },
             { "name": "Museum of Art of São Paulo", "type": "museum", "interests": ["art", "culture"], "ageRange": "teens, adults", "budget": "$$", "groupType": "all" },
@@ -170,6 +184,7 @@
         },
         {
           "city": "Salvador",
+          "cityImage": "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "activities": [
             { "name": "Pelourinho", "type": "sightseeing", "interests": ["history", "culture"], "ageRange": "all ages", "budget": "$", "groupType": "all" },
             { "name": "Elevador Lacerda", "type": "sightseeing", "interests": ["views", "urban life"], "ageRange": "all ages", "budget": "$", "groupType": "all" },
@@ -186,6 +201,7 @@
       "itinerary": [
         {
           "city": "Moscow",
+          "cityImage": "https://images.unsplash.com/photo-1523509080324-9183f313dc50?q=80&w=1933&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "activities": [
             { "name": "Red Square", "type": "sightseeing", "interests": ["history", "architecture"], "ageRange": "all ages", "budget": "$$", "groupType": "all" },
             { "name": "Kremlin Tour", "type": "sightseeing", "interests": ["history", "culture"], "ageRange": "adults", "budget": "$$$", "groupType": "couple, friends" },
@@ -196,6 +212,7 @@
         },
         {
           "city": "St. Petersburg",
+          "cityImage": "https://images.unsplash.com/photo-1558682325-7cf48d328e34?q=80&w=1906&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "activities": [
             { "name": "Hermitage Museum", "type": "museum", "interests": ["art", "history"], "ageRange": "teens, adults", "budget": "$$", "groupType": "all" },
             { "name": "Peterhof Palace", "type": "sightseeing", "interests": ["history", "architecture"], "ageRange": "all ages", "budget": "$$", "groupType": "all" },
@@ -212,6 +229,7 @@
       "itinerary": [
         {
           "city": "Paris",
+          "cityImage": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=1773&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "activities": [
             { "name": "Eiffel Tower", "type": "sightseeing", "interests": ["architecture", "history"], "ageRange": "all ages", "budget": "$$", "groupType": "all" },
             { "name": "Louvre Museum", "type": "museum", "interests": ["art", "history"], "ageRange": "teens, adults", "budget": "$$", "groupType": "all" },
@@ -222,6 +240,7 @@
         },
         {
           "city": "Nice",
+          "cityImage": "https://images.unsplash.com/photo-1485716797159-8b39d572960d?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "activities": [
             { "name": "Promenade des Anglais", "type": "sightseeing", "interests": ["beach", "urban life"], "ageRange": "all ages", "budget": "$", "groupType": "all" },
             { "name": "Matisse Museum", "type": "museum", "interests": ["art", "culture"], "ageRange": "teens, adults", "budget": "$$", "groupType": "all" },
@@ -238,6 +257,7 @@
       "itinerary": [
         {
           "city": "London",
+          "cityImage": "https://images.unsplash.com/photo-1486299267070-83823f5448dd?q=80&w=1771&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "activities": [
             { "name": "British Museum", "type": "museum", "interests": ["history", "art"], "ageRange": "teens, adults", "budget": "$$", "groupType": "all" },
             { "name": "Tower of London", "type": "sightseeing", "interests": ["history", "architecture"], "ageRange": "all ages", "budget": "$$", "groupType": "all" },
@@ -248,6 +268,7 @@
         },
         {
           "city": "Edinburgh",
+          "cityImage": "https://images.unsplash.com/photo-1557096002-7f215e6b5dcf?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "activities": [
             { "name": "Edinburgh Castle", "type": "sightseeing", "interests": ["history", "architecture"], "ageRange": "all ages", "budget": "$$", "groupType": "all" },
             { "name": "Royal Mile", "type": "sightseeing", "interests": ["history", "culture"], "ageRange": "all ages", "budget": "$", "groupType": "all" },
@@ -264,6 +285,7 @@
   "itinerary": [
     {
       "city": "New York City",
+      "cityImage": "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "activities": [
         { "name": "Central Park", "type": "park", "interests": ["nature", "relaxation"], "ageRange": "all ages", "budget": "$", "groupType": "all" },
         { "name": "Statue of Liberty", "type": "sightseeing", "interests": ["history", "culture"], "ageRange": "all ages", "budget": "$$", "groupType": "all" },
@@ -274,6 +296,7 @@
     },
     {
       "city": "Los Angeles",
+      "cityImage": "https://images.unsplash.com/photo-1597982087634-9884f03198ce?q=80&w=2988&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "activities": [
         { "name": "Hollywood Walk of Fame", "type": "sightseeing", "interests": ["pop culture", "history"], "ageRange": "all ages", "budget": "$", "groupType": "all" },
         { "name": "Santa Monica Pier", "type": "sightseeing", "interests": ["beach", "urban life"], "ageRange": "all ages", "budget": "$", "groupType": "all" },
@@ -284,6 +307,7 @@
     },
     {
       "city": "Washington D.C.",
+      "cityImage": "https://images.unsplash.com/photo-1637034199786-5942ff56b480?q=80&w=3164&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "activities": [
         { "name": "National Mall", "type": "park", "interests": ["history", "monuments"], "ageRange": "all ages", "budget": "$", "groupType": "all" },
         { "name": "Smithsonian Museums", "type": "museum", "interests": ["history", "science", "art"], "ageRange": "all ages", "budget": "$$", "groupType": "all" },
