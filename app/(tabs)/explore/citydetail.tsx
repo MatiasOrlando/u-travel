@@ -1,37 +1,172 @@
-import { StyleSheet, Text, View, Image } from "react-native";
-import React from "react";
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Pressable,
+  TextInput,
+  ScrollView,
+} from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import fakeCountries from "../../../data/fakeCountries.json";
 import { colorsDefault } from "@/constants/Colors";
 import RangeSliderCustom from "@/components/RangeSliderCustom";
+import FilterCard from "@/components/FilterCard";
+
+type ImageMapType = {
+  [key in "solo_user" | "couple_user" | "family_user" | "friends_user"]: any;
+};
+
+type TravelerCompany =
+  | "solo_user"
+  | "couple_user"
+  | "family_user"
+  | "friends_user";
 
 const CityDetail = () => {
   const { id } = useLocalSearchParams();
+  const [selectedTravelersId, setSelectedTravelersId] = useState<number | null>(
+    null
+  );
+  const [selectedTravelersCompany, setSelectedTravelersCompany] =
+    useState<TravelerCompany | null>(null);
+
+  const [minAge, setMinAge] = useState<number>(1);
+  const [maxAge, setMaxAge] = useState<number>(1);
 
   const selectedCity = fakeCountries.travelItineraries.flatMap((country) =>
     country.itinerary.filter((item) => item.city === id)
   );
 
-  const [{ city, cityImage, activities }] = selectedCity;
+  const [{ city, cityImage }] = selectedCity;
 
-  // console.log(activities);
+  const imageMap: ImageMapType = {
+    solo_user: require("../../../assets/images/solo_user.png"),
+    couple_user: require("../../../assets/images/couple_user.png"),
+    family_user: require("../../../assets/images/family_user.png"),
+    friends_user: require("../../../assets/images/friends_user.png"),
+  };
+
+  const userTypes: TravelerCompany[] = [
+    "solo_user",
+    "couple_user",
+    "family_user",
+    "friends_user",
+  ];
+
+  const handlePress = (index: number, el: TravelerCompany): void => {
+    setSelectedTravelersId(index === selectedTravelersId ? null : index);
+    setSelectedTravelersCompany(index === selectedTravelersId ? null : el);
+  };
 
   return (
     <View style={styles.container}>
-      <View
-        style={{ backgroundColor: "red", height: "100%", position: "relative" }}
-      >
+      <View style={{ height: "100%", position: "relative" }}>
         <View style={styles.imgContainer}>
           <Image style={styles.imgHome} source={{ uri: cityImage }} />
           <View style={styles.cityTagContainer}>
             <Text style={styles.cityTag}>{city}</Text>
           </View>
         </View>
-        <View style={styles.filterOptionsContainer}>
+        <ScrollView style={styles.filterOptionsContainer}>
           <View>
+            <Text
+              style={{
+                textAlign: "center",
+                paddingTop: 20,
+                fontSize: 20,
+                color: colorsDefault.brown.default,
+              }}
+            >
+              Create my ideal itinerary
+            </Text>
             <RangeSliderCustom />
+            <FilterCard>
+              <Text style={styles.mainText}>Traveling with</Text>
+              <View
+                style={{
+                  flexDirection: "row",
+                  marginTop: 20,
+                  justifyContent: "space-around",
+                  width: "100%",
+                }}
+              >
+                {userTypes.map((el, index) => (
+                  <Pressable
+                    key={index}
+                    onPress={() => handlePress(index, el)}
+                    style={{
+                      borderRadius: 8,
+                      overflow: "hidden",
+                    }}
+                  >
+                    <View
+                      style={{
+                        justifyContent: "center",
+                        alignItems: "center",
+                        backgroundColor:
+                          index === selectedTravelersId
+                            ? "#74AD8C"
+                            : "transparent",
+                        paddingVertical: 10,
+                        paddingHorizontal: 16,
+                      }}
+                    >
+                      <Image
+                        source={imageMap[el]}
+                        style={index === 0 ? styles.iconSolo : styles.icon}
+                        resizeMode="contain"
+                      />
+                      <Text>{el.replace("_user", "").replace("_", " ")}</Text>
+                    </View>
+                  </Pressable>
+                ))}
+              </View>
+            </FilterCard>
+            <FilterCard>
+              <View>
+                <Text style={styles.mainText}>Age range</Text>
+                <View style={styles.ageRangeContainer}>
+                  <Text style={{ fontSize: 16 }}>From</Text>
+                  <Pressable
+                    onPress={() => {
+                      setMinAge(minAge > 1 ? minAge - 1 : 1);
+                    }}
+                  >
+                    <Text>-</Text>
+                  </Pressable>
+                  <TextInput
+                    style={styles.inputAgeRange}
+                    keyboardType="numeric"
+                    value={minAge.toString()}
+                  />
+                  <Pressable onPress={() => setMinAge(minAge + 1)}>
+                    <Text>+</Text>
+                  </Pressable>
+                </View>
+                <View style={styles.ageRangeContainer}>
+                  <Text style={{ fontSize: 16, paddingRight: 20 }}>To</Text>
+                  <Pressable
+                    onPress={() =>
+                      setMaxAge(maxAge && maxAge > 1 ? maxAge - 1 : 1)
+                    }
+                  >
+                    <Text>-</Text>
+                  </Pressable>
+                  <TextInput
+                    style={styles.inputAgeRange}
+                    keyboardType="numeric"
+                    value={maxAge.toString() ?? 1}
+                  />
+                  <Pressable onPress={() => setMaxAge(maxAge ? maxAge + 1 : 1)}>
+                    <Text>+</Text>
+                  </Pressable>
+                </View>
+              </View>
+            </FilterCard>
           </View>
-        </View>
+        </ScrollView>
       </View>
     </View>
   );
@@ -65,8 +200,7 @@ const styles = StyleSheet.create({
   cityTag: {
     color: colorsDefault.secondary,
     fontSize: 22,
-    opacity: 1,
-    fontWeight: 700,
+    fontWeight: "700",
   },
   cityTagContainer: {
     position: "absolute",
@@ -74,8 +208,35 @@ const styles = StyleSheet.create({
     bottom: 90,
     paddingLeft: 50,
     backgroundColor: "rgba(194, 172, 147, 0.8)",
-    width: "40%",
+    width: "50%",
     left: 0,
     paddingVertical: 5,
+  },
+  mainText: {
+    fontSize: 18,
+  },
+  icon: {
+    width: 55,
+    height: 30,
+  },
+  iconSolo: {
+    width: 35,
+    height: 31,
+  },
+  ageRangeContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    marginTop: 10,
+    justifyContent: "center",
+    gap: 10,
+  },
+  inputAgeRange: {
+    height: 30,
+    backgroundColor: colorsDefault.secondary,
+    width: 50,
+    borderRadius: 10,
+    textAlign: "center",
+    marginLeft: 10,
+    marginRight: 10,
   },
 });

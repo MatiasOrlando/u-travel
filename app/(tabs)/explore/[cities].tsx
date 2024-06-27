@@ -7,19 +7,31 @@ import { colorsDefault } from "@/constants/Colors";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import CustomCarousel from "@/components/MyCarousel";
 import CityAttractions from "@/components/CityAttractions";
+import citiesItineraries from "../../../data/citiesIntineraries.json";
+import countries from "../../../data/countries.json";
 
 const CityPage = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
   const { id } = useLocalSearchParams();
-  const countryDataFiltered = fakeCountries.travelItineraries.filter(
-    ({ country }) => country === id
-  );
-  const [countryData] = countryDataFiltered;
-  const citiesOptions = countryData.itinerary.map(({ city, cityImage }) => ({
+  const idString = Array.isArray(id) ? id[0] : id;
+  const countryId = idString ? parseInt(idString) : null;
+
+  const countryData =
+    countryId !== null
+      ? countries.find((country) => country.id === countryId)
+      : null;
+
+  const citiesFilteredById =
+    countryId !== null
+      ? citiesItineraries.filter((city) => city.countryId === countryId)
+      : [];
+
+  const citiesOptions = citiesFilteredById.map(({ city, cityImage }) => ({
     city,
     cityImage,
   }));
-  const cityActivities = countryData.itinerary.flatMap((city) => {
+
+  const cityActivities = citiesFilteredById.flatMap((city) => {
     return city.activities.flatMap((activity) => activity.type);
   });
   const cityInfo = [...new Set(cityActivities)];
@@ -30,9 +42,9 @@ const CityPage = () => {
         <View>
           <Image
             style={styles.image}
-            source={{ uri: countryData.countryImage }}
+            source={{ uri: countryData?.countryImage }}
           />
-          <Text style={styles.countryText}>{id}</Text>
+          <Text style={styles.countryText}>{countryData?.country}</Text>
         </View>
         <View style={styles.formInputContainer}>
           <FormInput

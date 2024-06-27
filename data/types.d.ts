@@ -17,7 +17,7 @@ export interface CountryItinerary {
   country: string;
   countryImage: string;
   countryCartoon?: string;
-  itinerary: CityItinerary[];
+  itinerary?: CityItinerary[];
 }
 
 export interface TravelItineraries {

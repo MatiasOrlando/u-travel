@@ -17,7 +17,10 @@ export const colorsDefault = {
   brown: {
     default: '#B06743'
   },
-  secondary : '#fff'
+  secondary : '#fff',
+  gray: {
+    default : '#EFEDEB'
+  }
 }
 
 export const Colors = {

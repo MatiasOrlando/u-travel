@@ -6,12 +6,13 @@ import { colorsDefault } from "@/constants/Colors";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import CardCountry from "@/components/CardCountry";
 import { router } from "expo-router";
+import countries from "../../../data/countries.json";
 
 const explore = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const searchQuery = fakeCountries.travelItineraries.filter(
-    (countryIntinerary) => countryIntinerary.country.includes(searchTerm)
+  const searchQuery = countries.filter(({ country }) =>
+    country.includes(searchTerm)
   );
 
   return (
@@ -40,7 +41,7 @@ const explore = () => {
                 onPress={() =>
                   router.push({
                     pathname: "/explore/[cities]",
-                    params: { id: item.country },
+                    params: { id: item.id },
                   })
                 }
               >
