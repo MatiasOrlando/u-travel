@@ -3,7 +3,7 @@ import React from "react";
 import { Slot } from "expo-router";
 import { usePathname } from "expo-router";
 
-const _layoutAuth: React.FC = () => {
+const _layoutAuth = () => {
   const pathname = usePathname();
 
   let backgroundImage;

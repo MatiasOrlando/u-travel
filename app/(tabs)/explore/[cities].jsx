@@ -1,7 +1,6 @@
 import { SafeAreaView, StyleSheet, Text, View, Image } from "react-native";
 import React, { useState } from "react";
 import { useLocalSearchParams } from "expo-router";
-import fakeCountries from "../../../data/fakeCountries.json";
 import FormInput from "@/components/FormInput";
 import { colorsDefault } from "@/constants/Colors";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
@@ -11,20 +10,14 @@ import citiesItineraries from "../../../data/citiesIntineraries.json";
 import countries from "../../../data/countries.json";
 
 const CityPage = () => {
-  const [searchTerm, setSearchTerm] = useState<string>("");
   const { id } = useLocalSearchParams();
-  const idString = Array.isArray(id) ? id[0] : id;
-  const countryId = idString ? parseInt(idString) : null;
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const countryData =
-    countryId !== null
-      ? countries.find((country) => country.id === countryId)
-      : null;
+  const countryData = countries.find((country) => country.id === parseInt(id));
 
-  const citiesFilteredById =
-    countryId !== null
-      ? citiesItineraries.filter((city) => city.countryId === countryId)
-      : [];
+  const citiesFilteredById = citiesItineraries.filter(
+    (city) => city.countryId === parseInt(id)
+  );
 
   const citiesOptions = citiesFilteredById.map(({ city, cityImage }) => ({
     city,
@@ -34,6 +27,7 @@ const CityPage = () => {
   const cityActivities = citiesFilteredById.flatMap((city) => {
     return city.activities.flatMap((activity) => activity.type);
   });
+
   const cityInfo = [...new Set(cityActivities)];
 
   return (

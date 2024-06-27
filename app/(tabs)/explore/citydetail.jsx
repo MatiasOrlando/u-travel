@@ -14,26 +14,13 @@ import { colorsDefault } from "@/constants/Colors";
 import RangeSliderCustom from "@/components/RangeSliderCustom";
 import FilterCard from "@/components/FilterCard";
 
-type ImageMapType = {
-  [key in "solo_user" | "couple_user" | "family_user" | "friends_user"]: any;
-};
-
-type TravelerCompany =
-  | "solo_user"
-  | "couple_user"
-  | "family_user"
-  | "friends_user";
-
 const CityDetail = () => {
   const { id } = useLocalSearchParams();
-  const [selectedTravelersId, setSelectedTravelersId] = useState<number | null>(
-    null
-  );
-  const [selectedTravelersCompany, setSelectedTravelersCompany] =
-    useState<TravelerCompany | null>(null);
+  const [selectedTravelersId, setSelectedTravelersId] = useState(null);
+  const [selectedTravelersCompany, setSelectedTravelersCompany] = useState("");
 
-  const [minAge, setMinAge] = useState<number>(1);
-  const [maxAge, setMaxAge] = useState<number>(1);
+  const [minAge, setMinAge] = useState(1);
+  const [maxAge, setMaxAge] = useState(1);
 
   const selectedCity = fakeCountries.travelItineraries.flatMap((country) =>
     country.itinerary.filter((item) => item.city === id)
@@ -41,21 +28,16 @@ const CityDetail = () => {
 
   const [{ city, cityImage }] = selectedCity;
 
-  const imageMap: ImageMapType = {
+  const imageMap = {
     solo_user: require("../../../assets/images/solo_user.png"),
     couple_user: require("../../../assets/images/couple_user.png"),
     family_user: require("../../../assets/images/family_user.png"),
     friends_user: require("../../../assets/images/friends_user.png"),
   };
 
-  const userTypes: TravelerCompany[] = [
-    "solo_user",
-    "couple_user",
-    "family_user",
-    "friends_user",
-  ];
+  const userTypes = ["solo_user", "couple_user", "family_user", "friends_user"];
 
-  const handlePress = (index: number, el: TravelerCompany): void => {
+  const handlePress = (index, el) => {
     setSelectedTravelersId(index === selectedTravelersId ? null : index);
     setSelectedTravelersCompany(index === selectedTravelersId ? null : el);
   };

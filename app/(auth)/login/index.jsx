@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { Link, router } from "expo-router";
 import { colorsDefault } from "../../../constants/Colors";
-import FormInput from "@/components/FormInput";
-import ButtonPrimary from "@/components/ButtonPrimary";
+import FormInput from "@components/FormInput";
+import ButtonPrimary from "@components/ButtonPrimary";
 
 const index = () => {
   return (

@@ -5,7 +5,7 @@ import { colorsDefault } from "@/constants/Colors";
 import FilterCard from "./FilterCard";
 
 const RangeSliderCustom = () => {
-  const [slider, setSliderValue] = useState<number>(500);
+  const [slider, setSliderValue] = useState(500);
   return (
     <FilterCard>
       <Text style={styles.mainText}>My Budget</Text>

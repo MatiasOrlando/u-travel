@@ -1,24 +1,8 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  Image,
-  ImageSourcePropType,
-  TextInputProps,
-} from "react-native";
+import { StyleSheet, Text, View, TextInput, Image } from "react-native";
 import { colorsDefault } from "@/constants/Colors";
 
-interface FormInputProps extends TextInputProps {
-  label?: string;
-  color: string;
-  icon: ImageSourcePropType | React.ReactNode;
-  additionalText?: string;
-  onChangeValue?: (text: string) => void;
-}
-
-const FormInput: React.FC<FormInputProps> = ({
+const FormInput = ({
   label,
   color,
   icon,

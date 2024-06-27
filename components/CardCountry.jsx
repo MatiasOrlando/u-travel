@@ -1,9 +1,8 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
-import { CountryItinerary } from "@/data/types";
 import { colorsDefault } from "@/constants/Colors";
 
-const CardCountry: React.FC<CountryItinerary> = ({ country, countryImage }) => {
+const CardCountry = ({ country, countryImage }) => {
   return (
     <View style={{ position: "relative" }}>
       <Text

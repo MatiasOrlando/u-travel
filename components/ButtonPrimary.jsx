@@ -2,13 +2,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { colorsDefault } from "../constants/Colors";
 
-const ButtonPrimary = ({
-  title,
-  handlePress,
-}: {
-  title: string;
-  handlePress: () => void;
-}) => {
+const ButtonPrimary = ({ title, handlePress }) => {
   return (
     <Pressable
       style={{

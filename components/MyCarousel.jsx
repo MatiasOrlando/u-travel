@@ -12,15 +12,8 @@ import { router } from "expo-router";
 
 const { width: screenWidth } = Dimensions.get("window");
 
-type citiesOptions = {
-  city: string;
-  cityImage: string;
-};
-
-type CitiesCarousel = citiesOptions[];
-
-const MyCarousel = ({ data }: { data: any }) => {
-  const renderItem = ({ item }: { item: any }) => (
+const MyCarousel = ({ data }) => {
+  const renderItem = ({ item }) => (
     <Pressable
       onPress={() =>
         router.push({
@@ -55,19 +48,13 @@ const MyCarousel = ({ data }: { data: any }) => {
   );
 };
 
-const CustomCarousel = ({
-  citiesOptions,
-  searchTerm,
-}: {
-  citiesOptions: CitiesCarousel;
-  searchTerm: string;
-}) => {
-  const [cities, setCities] = useState<CitiesCarousel>([]);
+const CustomCarousel = ({ citiesOptions, searchTerm }) => {
+  const [cities, setCities] = useState([]);
 
   useEffect(() => {
     if (searchTerm && searchTerm.trim() !== "") {
-      const filteredCities = citiesOptions.filter(
-        ({ city }: { city: string }) => city.includes(searchTerm)
+      const filteredCities = citiesOptions.filter(({ city }) =>
+        city.includes(searchTerm)
       );
       setCities(filteredCities);
     } else {
