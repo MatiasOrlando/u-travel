@@ -82,7 +82,6 @@ const styles = StyleSheet.create({
     color: "#764ABC",
   },
   card: {
-    backgroundColor: "#764ABC",
     borderRadius: 10,
     justifyContent: "center",
     alignItems: "center",
