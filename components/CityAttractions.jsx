@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, ScrollView, Image } from "react-native";
 import React from "react";
 import { colorsDefault } from "@/constants/Colors";
 
-const CityAttractions = ({ cityInfo }) => {
+const CityAttractions = ({ cityActivities }) => {
   return (
     <View>
       <Text
@@ -15,8 +15,8 @@ const CityAttractions = ({ cityInfo }) => {
         Read more about..
       </Text>
       <ScrollView horizontal style={{ overflow: "visible" }}>
-        {cityInfo &&
-          cityInfo.map((activity) => (
+        {cityActivities &&
+          cityActivities.map((activity) => (
             <View
               key={activity}
               style={{

@@ -1,66 +1,82 @@
-import { StyleSheet, Text, View, FlatList, Pressable } from "react-native";
-import React, { useState, useEffect } from "react";
-import fakeCountries from "../../../data/fakeCountries.json";
+import { StyleSheet, View, FlatList, Pressable } from "react-native";
+import React, { useEffect, useState } from "react";
 import FormInput from "@/components/FormInput";
 import { colorsDefault } from "@/constants/Colors";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import CardCountry from "@/components/CardCountry";
 import { router } from "expo-router";
-import countries from "../../../data/countries.json";
+import { useGetCountriesQuery } from "@/services/shopServices";
 
-const explore = () => {
+const Explore = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [countriesData, setCountriesData] = useState([]);
+  const { data: countries, isLoading } = useGetCountriesQuery();
 
-  const searchQuery = countries.filter(({ country }) =>
-    country.includes(searchTerm)
-  );
+  useEffect(() => {
+    if (!isLoading && countries) {
+      if (searchTerm.trim() !== "") {
+        const searchQueryCountries = countries.filter(({ country }) =>
+          country.toLowerCase().includes(searchTerm.toLowerCase())
+        );
+        setCountriesData(searchQueryCountries);
+      } else {
+        setCountriesData(countries);
+      }
+    }
+  }, [searchTerm, countries, isLoading]);
 
   return (
-    <View
-      style={{
-        width: "100%",
-        marginTop: 20,
-        flex: 1,
-        backgroundColor: "#EFEDEB",
-      }}
-    >
-      <View style={{ paddingHorizontal: 20 }}>
-        <View>
-          <FormInput
-            color={colorsDefault.brown.default}
-            onChangeValue={setSearchTerm}
-            icon={<TabBarIcon name="search" size={24} />}
-            placeholder="Search a country..."
-          />
-        </View>
-        <View>
-          <FlatList
-            data={searchQuery}
-            renderItem={({ item }) => (
-              <Pressable
-                onPress={() =>
-                  router.push({
-                    pathname: "/explore/[cities]",
-                    params: { id: item.id },
-                  })
-                }
-              >
-                <CardCountry {...item} />
-              </Pressable>
-            )}
-            keyExtractor={({ country }) => country}
-            numColumns={2}
-            columnWrapperStyle={{
-              justifyContent: "space-between",
-            }}
-            contentContainerStyle={{ gap: 15, marginTop: 25 }}
-          />
-        </View>
+    <View style={styles.container}>
+      <View style={styles.innerContainer}>
+        <FormInput
+          color={colorsDefault.brown.default}
+          onChangeValue={setSearchTerm}
+          icon={<TabBarIcon name="search" size={24} />}
+          placeholder="Search a country..."
+        />
+        <FlatList
+          data={countriesData}
+          renderItem={({ item }) => (
+            <Pressable
+              onPress={() =>
+                router.push({
+                  pathname: "/explore/[cities]",
+                  params: { id: item.id },
+                })
+              }
+            >
+              <CardCountry {...item} />
+            </Pressable>
+          )}
+          keyExtractor={({ country }) => country || Math.random().toString()}
+          numColumns={2}
+          columnWrapperStyle={styles.columnWrapper}
+          contentContainerStyle={styles.flatListContent}
+          showsVerticalScrollIndicator={false}
+        />
       </View>
     </View>
   );
 };
 
-export default explore;
+export default Explore;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    width: "100%",
+    marginTop: 20,
+    flex: 1,
+    backgroundColor: "#EFEDEB",
+  },
+  innerContainer: {
+    paddingHorizontal: 20,
+  },
+  columnWrapper: {
+    justifyContent: "space-between",
+  },
+  flatListContent: {
+    gap: 15,
+    marginTop: 25,
+    paddingBottom: 120,
+  },
+});

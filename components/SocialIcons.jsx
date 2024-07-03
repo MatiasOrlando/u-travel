@@ -3,7 +3,7 @@ import React from "react";
 
 const SocialIcons = () => {
   return (
-    <View style={{ alignItems: "center", marginTop: 60 }}>
+    <View style={{ alignItems: "center", marginTop: 30 }}>
       <Text style={{ fontSize: 18 }}>Join us</Text>
       <View
         style={{

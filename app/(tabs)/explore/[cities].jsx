@@ -1,44 +1,56 @@
-import { SafeAreaView, StyleSheet, Text, View, Image } from "react-native";
-import React, { useState } from "react";
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  Platform,
+  StatusBar,
+  ScrollView,
+} from "react-native";
+import React, { useEffect, useState } from "react";
 import { useLocalSearchParams } from "expo-router";
 import FormInput from "@/components/FormInput";
 import { colorsDefault } from "@/constants/Colors";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import CustomCarousel from "@/components/MyCarousel";
 import CityAttractions from "@/components/CityAttractions";
-import citiesItineraries from "../../../data/citiesIntineraries.json";
-import countries from "../../../data/countries.json";
+import {
+  useGetCitiesByCountryIdQuery,
+  useGetCountryByIdQuery,
+} from "@/services/shopServices";
 
 const CityPage = () => {
   const { id } = useLocalSearchParams();
   const [searchTerm, setSearchTerm] = useState("");
+  const [cityActivities, setCityActivities] = useState([]);
+  const [country, setCountry] = useState({});
 
-  const countryData = countries.find((country) => country.id === parseInt(id));
+  const { data: citiesFilteredById, isLoading } =
+    useGetCitiesByCountryIdQuery(id);
 
-  const citiesFilteredById = citiesItineraries.filter(
-    (city) => city.countryId === parseInt(id)
-  );
+  const { data: countryData, isLoading: isLoadingCountryData } =
+    useGetCountryByIdQuery(id);
 
-  const citiesOptions = citiesFilteredById.map(({ city, cityImage }) => ({
-    city,
-    cityImage,
-  }));
-
-  const cityActivities = citiesFilteredById.flatMap((city) => {
-    return city.activities.flatMap((activity) => activity.type);
-  });
-
-  const cityInfo = [...new Set(cityActivities)];
+  useEffect(() => {
+    if (!isLoading && citiesFilteredById) {
+      const cityActivitiesData = citiesFilteredById.flatMap((city) => {
+        return city.activities.flatMap((activity) => activity.type);
+      });
+      const cityInfo = [...new Set(cityActivitiesData)];
+      setCityActivities(cityInfo);
+    }
+    if (!isLoadingCountryData && countryData) {
+      setCountry(countryData);
+    }
+  }, [citiesFilteredById, countryData, isLoading, isLoadingCountryData]);
 
   return (
     <SafeAreaView>
-      <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
         <View>
-          <Image
-            style={styles.image}
-            source={{ uri: countryData?.countryImage }}
-          />
-          <Text style={styles.countryText}>{countryData?.country}</Text>
+          <Image style={styles.image} source={{ uri: country.countryImage }} />
+          <Text style={styles.countryText}>{country.country}</Text>
         </View>
         <View style={styles.formInputContainer}>
           <FormInput
@@ -48,9 +60,12 @@ const CityPage = () => {
             placeholder="Search a city..."
           />
         </View>
-        <CustomCarousel citiesOptions={citiesOptions} searchTerm={searchTerm} />
-        <CityAttractions cityInfo={cityInfo} />
-      </View>
+        <CustomCarousel
+          citiesFilteredById={citiesFilteredById}
+          searchTerm={searchTerm}
+        />
+        <CityAttractions cityActivities={cityActivities} />
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -62,6 +77,8 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingHorizontal: 30,
     alignItems: "center",
+    marginTop: Platform.OS === "ios" ? StatusBar.currentHeight : 70,
+    paddingBottom: 30,
   },
   image: {
     height: 200,

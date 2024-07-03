@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import imageHome from "../assets/images/home.png";
 import { colorsDefault } from "@/constants/Colors";
-import { router } from "expo-router";
+import { Link, router } from "expo-router";
 import SocialIcons from "@/components/SocialIcons";
 
 export default function HomeScreen() {
@@ -25,7 +25,7 @@ export default function HomeScreen() {
               }}
               onPress={() =>
                 router.push({
-                  pathname: "/(tabs)/explore",
+                  pathname: "/register",
                   params: { type: "register" },
                 })
               }
@@ -67,30 +67,29 @@ export default function HomeScreen() {
                 Sign In
               </Text>
             </Pressable>
-            <SocialIcons />
-            {/* <Pressable
+            <View
               style={{
-                backgroundColor: "white",
+                width: "100%",
                 alignItems: "center",
-                padding: 20,
-                borderRadius: 8,
-                marginTop: 20,
-                shadowColor: "black",
-                shadowOffset: { width: 0, height: 2 },
-                shadowOpacity: 0.2,
-                shadowRadius: 2,
               }}
-              onPress={() => router.push("/(tabs)")}
             >
-              <Text
+              <Link
                 style={{
-                  fontSize: 20,
-                  color: "black",
+                  marginTop: 40,
                 }}
+                href={"/(tabs)"}
               >
-                Home
-              </Text>
-            </Pressable> */}
+                <Text
+                  style={{
+                    fontSize: 18,
+                    color: colorsDefault.vanilla.dark,
+                  }}
+                >
+                  Continue as guest
+                </Text>
+              </Link>
+            </View>
+            <SocialIcons />
           </View>
         </View>
       </View>
@@ -103,7 +102,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   imgContainer: {
-    marginTop: 200,
+    marginTop: 130,
     alignItems: "center",
   },
   imgHome: {

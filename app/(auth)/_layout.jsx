@@ -17,8 +17,8 @@ const _layoutAuth = () => {
         style={{
           backgroundColor: "#D4D4D4",
           alignItems: "center",
-          paddingTop: 60,
-          height: 392,
+          paddingTop: pathname === "/register" ? 20 : 60,
+          height: pathname === "/register" ? 330 : 392,
           width: 590,
           borderBottomRightRadius: 300,
           borderBottomLeftRadius: 300,

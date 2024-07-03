@@ -48,19 +48,18 @@ const MyCarousel = ({ data }) => {
   );
 };
 
-const CustomCarousel = ({ citiesOptions, searchTerm }) => {
+const CustomCarousel = ({ citiesFilteredById, searchTerm }) => {
   const [cities, setCities] = useState([]);
-
   useEffect(() => {
-    if (searchTerm && searchTerm.trim() !== "") {
-      const filteredCities = citiesOptions.filter(({ city }) =>
-        city.includes(searchTerm)
-      );
+    if (citiesFilteredById) {
+      const filteredCities = searchTerm.trim()
+        ? citiesFilteredById.filter(({ city }) =>
+            city.toLowerCase().includes(searchTerm.toLowerCase())
+          )
+        : citiesFilteredById;
       setCities(filteredCities);
-    } else {
-      setCities(citiesOptions);
     }
-  }, [searchTerm]);
+  }, [searchTerm, citiesFilteredById]);
 
   return (
     <View style={styles.container}>

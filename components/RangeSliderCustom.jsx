@@ -3,9 +3,14 @@ import React, { useState } from "react";
 import Slider from "@react-native-community/slider";
 import { colorsDefault } from "@/constants/Colors";
 import FilterCard from "./FilterCard";
+import { useSelector, useDispatch } from "react-redux";
+import { setBudgetValue } from "../features/BudgetFilter/BudgetFilterSlice";
 
 const RangeSliderCustom = () => {
-  const [slider, setSliderValue] = useState(500);
+  const sliderBudgetValue = useSelector(
+    (state) => state.budgetFilter.budgetValue
+  );
+  const dispatch = useDispatch();
   return (
     <FilterCard>
       <Text style={styles.mainText}>My Budget</Text>
@@ -19,11 +24,11 @@ const RangeSliderCustom = () => {
           }}
           minimumValue={500}
           maximumValue={3000}
-          value={slider}
+          value={sliderBudgetValue}
           step={100}
-          onValueChange={(value) => setSliderValue(value)}
+          onValueChange={(value) => dispatch(setBudgetValue(value))}
         />
-        <Text style={styles.priceRange}>{`$500 - $${slider}`}</Text>
+        <Text style={styles.priceRange}>{`$500 - $${sliderBudgetValue}`}</Text>
       </View>
     </FilterCard>
   );
