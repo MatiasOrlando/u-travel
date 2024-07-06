@@ -6,13 +6,18 @@ import FormInput from "@/components/FormInput";
 import ButtonPrimary from "@/components/ButtonPrimary";
 import { useSignInMutation } from "@/services/authServices";
 import CustomModal from "@/components/CustomModal";
+import { setUser } from "@/features/Auth/AuthSlice";
+import { useDispatch } from "react-redux";
+import { AntDesign } from "@expo/vector-icons";
 
 const index = () => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [
     triggerSignIn,
-    { isSuccess: isSuccessSignIn, isLoading, isError, error },
+    { isSuccess: isSuccessSignIn, isLoading, isError, error, data },
   ] = useSignInMutation();
+
+  const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -30,6 +35,13 @@ const index = () => {
     if (isError) {
       setModalVisible(!isModalVisible);
     } else if (isSuccessSignIn) {
+      dispatch(
+        setUser({
+          email: data.email,
+          idToken: data.idToken,
+          localId: data.localId,
+        })
+      );
       router.push("/(tabs)/explore");
     }
   }, [isError, isLoading, isSuccessSignIn, error]);
@@ -52,12 +64,18 @@ const index = () => {
   };
 
   return (
-    <View style={{ width: "100%", paddingHorizontal: 30 }}>
-      <View style={{ marginTop: 30 }}>
+    <View style={styles.signInContainer}>
+      <View style={styles.signInFormContainer}>
         <FormInput
           label="E-mail"
           color={colorsDefault.brown.default}
-          icon={require("../../../assets/images/userlog.png")}
+          icon={
+            <AntDesign
+              name="user"
+              size={24}
+              color={colorsDefault.brown.default}
+            />
+          }
           onChangeValue={(value) => {
             handleChange("email", value);
           }}
@@ -65,58 +83,32 @@ const index = () => {
         <FormInput
           label="Password"
           color={colorsDefault.brown.default}
-          icon={require("../../../assets/images/lock.png")}
+          icon={
+            <AntDesign
+              name="lock1"
+              size={24}
+              color={colorsDefault.brown.default}
+            />
+          }
           additionalText="Forgot password?"
           onChangeValue={(value) => handleChange("password", value)}
           secureTextEntry
         />
       </View>
-      <View
-        style={{
-          marginTop: 50,
-          alignItems: "center",
-        }}
-      >
+      <View style={styles.signInButtonContainer}>
         <ButtonPrimary
           title="Sign In"
-          handlePress={() => {
-            handleSubmit();
-          }}
+          handlePress={handleSubmit}
           disabled={isLoading}
         />
       </View>
-      <View
-        style={{
-          alignItems: "center",
-          flexDirection: "row",
-          justifyContent: "center",
-          marginTop: 50,
-        }}
-      >
+      <View style={styles.signInSignUpContainer}>
         <View>
-          <Text style={{ color: colorsDefault.brown.default, fontSize: 16 }}>
-            Don't have an account?
-          </Text>
+          <Text style={styles.signInSignUpText}>Don't have an account?</Text>
         </View>
-        <View
-          style={{
-            borderBottomWidth: 1,
-            borderBottomColor: colorsDefault.brown.default,
-            marginLeft: 3,
-            marginTop: 2,
-          }}
-        >
+        <View style={styles.signInSignUpLinkContainer}>
           <Link href="/register">
-            <Text
-              style={{
-                fontSize: 16,
-                fontWeight: 600,
-                color: colorsDefault.brown.default,
-                paddingBottom: 2,
-              }}
-            >
-              Sign up
-            </Text>
+            <Text style={styles.signInSignUpLink}>Sign up</Text>
           </Link>
         </View>
       </View>
@@ -131,4 +123,38 @@ const index = () => {
 
 export default index;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  signInContainer: {
+    width: "100%",
+    paddingHorizontal: 30,
+  },
+  signInFormContainer: {
+    marginTop: 30,
+  },
+  signInButtonContainer: {
+    marginTop: 50,
+    alignItems: "center",
+  },
+  signInSignUpContainer: {
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "center",
+    marginTop: 50,
+  },
+  signInSignUpText: {
+    color: colorsDefault.brown.default,
+    fontSize: 16,
+  },
+  signInSignUpLinkContainer: {
+    borderBottomWidth: 1,
+    borderBottomColor: colorsDefault.brown.default,
+    marginLeft: 3,
+    marginTop: 2,
+  },
+  signInSignUpLink: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: colorsDefault.brown.default,
+    paddingBottom: 2,
+  },
+});

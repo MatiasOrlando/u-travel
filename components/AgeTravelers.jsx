@@ -16,7 +16,7 @@ const AgeTravelers = () => {
             setMinAge(minAge > 1 ? minAge - 1 : 1);
           }}
         >
-          <Text>-</Text>
+          <Text style={styles.ageController}>-</Text>
         </Pressable>
         <TextInput
           style={styles.inputAgeRange}
@@ -24,7 +24,7 @@ const AgeTravelers = () => {
           value={minAge.toString()}
         />
         <Pressable onPress={() => setMinAge(minAge + 1)}>
-          <Text>+</Text>
+          <Text style={styles.ageController}>+</Text>
         </Pressable>
       </View>
       <View style={styles.ageRangeContainer}>
@@ -32,7 +32,7 @@ const AgeTravelers = () => {
         <Pressable
           onPress={() => setMaxAge(maxAge && maxAge > 1 ? maxAge - 1 : 1)}
         >
-          <Text>-</Text>
+          <Text style={styles.ageController}>-</Text>
         </Pressable>
         <TextInput
           style={styles.inputAgeRange}
@@ -40,7 +40,7 @@ const AgeTravelers = () => {
           value={maxAge.toString() ?? 1}
         />
         <Pressable onPress={() => setMaxAge(maxAge ? maxAge + 1 : 1)}>
-          <Text>+</Text>
+          <Text style={styles.ageController}>+</Text>
         </Pressable>
       </View>
     </View>
@@ -68,5 +68,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginLeft: 10,
     marginRight: 10,
+  },
+  ageController: {
+    fontSize: 20,
   },
 });

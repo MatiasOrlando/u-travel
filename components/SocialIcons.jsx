@@ -1,5 +1,7 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 import React from "react";
+import { AntDesign } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 
 const SocialIcons = () => {
   return (
@@ -16,27 +18,18 @@ const SocialIcons = () => {
         <View
           style={[styles.socialIconContainer, { backgroundColor: "black" }]}
         >
-          <Image
-            style={styles.imageIcon}
-            source={require("../assets/images/Apple.png")}
-          />
+          <AntDesign name="apple1" size={26} color="white" />
         </View>
         <View
           style={[styles.socialIconContainer, { backgroundColor: "#3B5998" }]}
         >
-          <Image
-            style={styles.imageIcon}
-            source={require("../assets/images/Facebook.png")}
-          />
+          <FontAwesome name="facebook-f" size={26} color="white" />
         </View>
 
         <View
           style={[styles.socialIconContainer, { backgroundColor: "#FF6868" }]}
         >
-          <Image
-            style={styles.imageIcon}
-            source={require("../assets/images/google.png")}
-          />
+          <AntDesign name="google" size={26} color="white" />
         </View>
       </View>
     </View>
@@ -49,6 +42,8 @@ const styles = StyleSheet.create({
   socialIconContainer: {
     padding: 15,
     borderRadius: 8,
+    minWidth: 55,
+    alignItems: "center",
   },
   imageIcon: {
     height: 22,

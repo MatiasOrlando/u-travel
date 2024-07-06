@@ -3,6 +3,7 @@ import { baseUrl } from "../database/realtimeDatabase";
 
 export const shopApi = createApi({
   reducerPath: "shopApi",
+  tagTypes: ["profileImageGet"],
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
     getCountries: builder.query({
@@ -31,6 +32,20 @@ export const shopApi = createApi({
         return transformedResponse;
       },
     }),
+    getProfileImage: builder.query({
+      query: (localId) => `profileImages/${localId}.json`,
+      providesTags: ["profileImageGet"],
+    }),
+    postProfileImage: builder.mutation({
+      query: ({ image, localId }) => ({
+        url: `profileImages/${localId}.json`,
+        method: "PUT",
+        body: {
+          image: image,
+        },
+      }),
+      invalidatesTags: ["profileImageGet"],
+    }),
   }),
 });
 
@@ -39,4 +54,6 @@ export const {
   useGetCitiesByCountryIdQuery,
   useGetCityByIdQuery,
   useGetCountryByIdQuery,
+  useGetProfileImageQuery,
+  usePostProfileImageMutation,
 } = shopApi;
