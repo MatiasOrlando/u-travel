@@ -30,13 +30,20 @@ const Profile = () => {
         { marginTop: Platform.OS === "ios" ? 80 : statusBarHeight || 200 },
       ]}
     >
-      <View style={{ width: "100%", alignItems: "center", gap: 25 }}>
+      <View
+        style={{
+          width: "100%",
+          alignItems: "center",
+          gap: 25,
+        }}
+      >
         <ImageSelector />
-        <ButtonPrimary
-          title="Set my address"
-          handlePress={() => router.push("/profile/location")}
-        />
-
+        <View style={{ width: "100%", alignItems: "center" }}>
+          <ButtonPrimary
+            title="Set my address"
+            handlePress={() => router.push("/profile/location")}
+          />
+        </View>
         {user && (
           <View style={{ width: "100%", paddingHorizontal: 60, gap: 20 }}>
             <Text style={styles.userInfo}>Username: {user.split("@")[0]}</Text>

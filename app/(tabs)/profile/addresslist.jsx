@@ -5,7 +5,6 @@ import AddressItem from "@/components/AddressItem";
 import { useGetLocationQuery } from "@/services/shopServices";
 
 const ListAddress = () => {
-  //const [location, setLocation] = useState(null)
   const { localId } = useSelector((state) => state.auth.value);
   const { data: location } = useGetLocationQuery(localId);
   return (
