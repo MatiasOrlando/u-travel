@@ -8,6 +8,7 @@ import {
   usePostProfileImageMutation,
 } from "@/services/shopServices";
 import { setCameraImage } from "@/features/Auth/AuthSlice";
+import ButtonPrimary from "./ButtonPrimary";
 
 const ImageSelector = () => {
   const [image, setImage] = useState(null);
@@ -112,7 +113,7 @@ const ImageSelector = () => {
               }}
             />
           </View>
-          <Pressable
+          <ButtonPrimary
             onPress={pickImage}
             style={({ pressed }) => [
               styles.addImageBtn,
@@ -120,11 +121,8 @@ const ImageSelector = () => {
                 opacity: pressed ? 0.6 : 1,
               },
             ]}
-          >
-            <Text style={styles.addImgText}>
-              {image ? "Edit profile picture" : "Add profile picture"}
-            </Text>
-          </Pressable>
+            title={image ? "Edit profile picture" : "Add profile picture"}
+          />
         </>
       )}
     </View>
@@ -136,6 +134,7 @@ export default ImageSelector;
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
+    width: 320,
   },
   profileImg: {
     marginVertical: 20,
@@ -159,7 +158,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: 30,
     borderRadius: 10,
-    width: 300,
+    width: "100%",
   },
   addImgText: {
     color: "white",

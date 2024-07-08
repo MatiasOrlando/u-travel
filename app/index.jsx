@@ -77,7 +77,7 @@ export default function HomeScreen() {
                 style={{
                   marginTop: 40,
                 }}
-                href={"/(tabs)"}
+                href={"/(tabs)/explore"}
               >
                 <Text
                   style={{

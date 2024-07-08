@@ -1,35 +1,34 @@
-import { StyleSheet, Pressable } from "react-native";
 import React from "react";
-import { Stack } from "expo-router";
-import { router } from "expo-router";
+import { Stack, router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { Pressable } from "react-native";
 
 const _layout = () => {
   return (
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
       <Stack.Screen
-        name="[cities]"
+        name="location"
         options={{
+          headerTransparent: true,
           headerTitle: "",
           headerLeft: () => (
             <Pressable onPress={router.back}>
               <Ionicons name="arrow-back" size={24} color="black" />
             </Pressable>
           ),
-          headerTransparent: true,
         }}
       />
       <Stack.Screen
-        name="citydetail"
+        name="addresslist"
         options={{
+          headerTransparent: true,
           headerTitle: "",
           headerLeft: () => (
             <Pressable onPress={router.back}>
               <Ionicons name="arrow-back" size={24} color="black" />
             </Pressable>
           ),
-          headerTransparent: true,
         }}
       />
     </Stack>

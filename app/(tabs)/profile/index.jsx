@@ -10,6 +10,8 @@ import {
 import React, { useState, useEffect } from "react";
 import ImageSelector from "@/components/ImageSelector";
 import { useSelector } from "react-redux";
+import ButtonPrimary from "@/components/ButtonPrimary";
+import { router } from "expo-router";
 
 const Profile = () => {
   const { user } = useSelector((state) => state.auth.value);
@@ -28,12 +30,17 @@ const Profile = () => {
         { marginTop: Platform.OS === "ios" ? 80 : statusBarHeight || 200 },
       ]}
     >
-      <View>
+      <View style={{ width: "100%", alignItems: "center", gap: 25 }}>
         <ImageSelector />
+        <ButtonPrimary
+          title="Set my address"
+          handlePress={() => router.push("/profile/location")}
+        />
+
         {user && (
-          <View style={{ marginTop: 30 }}>
-            <Text>Username: {user.split("@")[0]}</Text>
-            <Text>Email: {user}</Text>
+          <View style={{ width: "100%", paddingHorizontal: 60, gap: 20 }}>
+            <Text style={styles.userInfo}>Username: {user.split("@")[0]}</Text>
+            <Text style={styles.userInfo}>Email: {user}</Text>
           </View>
         )}
       </View>
@@ -47,5 +54,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
+  },
+  btnAddress: {
+    marginTop: 20,
+  },
+  userInfo: {
+    fontSize: 18,
   },
 });

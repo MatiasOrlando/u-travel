@@ -2,7 +2,7 @@ import { Pressable, StyleSheet, Text } from "react-native";
 import React from "react";
 import { colorsDefault } from "../constants/Colors";
 
-const ButtonPrimary = ({ title, handlePress }) => {
+const ButtonPrimary = ({ title, handlePress, ...rest }) => {
   return (
     <Pressable
       style={{
@@ -11,6 +11,7 @@ const ButtonPrimary = ({ title, handlePress }) => {
         width: "75%",
       }}
       onPress={handlePress}
+      {...rest}
     >
       <Text
         style={{
