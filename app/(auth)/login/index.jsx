@@ -12,6 +12,7 @@ import { AntDesign } from "@expo/vector-icons";
 
 const index = () => {
   const [isModalVisible, setModalVisible] = useState(false);
+  const [visiblePassword, setVisiblePassword] = useState(false);
   const [
     triggerSignIn,
     { isSuccess: isSuccessSignIn, isLoading, isError, error, data },
@@ -63,6 +64,10 @@ const index = () => {
     }
   };
 
+  const handlePasswordVisibility = () => {
+    setVisiblePassword(!visiblePassword);
+  };
+
   return (
     <View style={styles.signInContainer}>
       <View style={styles.signInFormContainer}>
@@ -85,14 +90,15 @@ const index = () => {
           color={colorsDefault.brown.default}
           icon={
             <AntDesign
-              name="lock1"
+              name={!visiblePassword ? "lock1" : "unlock"}
               size={24}
               color={colorsDefault.brown.default}
+              onPress={handlePasswordVisibility}
             />
           }
           additionalText="Forgot password?"
           onChangeValue={(value) => handleChange("password", value)}
-          secureTextEntry
+          secureTextEntry={!visiblePassword}
         />
       </View>
       <View style={styles.signInButtonContainer}>
