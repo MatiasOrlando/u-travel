@@ -20,7 +20,7 @@ const CardCountry = ({ country, countryImage }) => {
         {country}
       </Text>
       <Image
-        style={{ height: 185, width: 185, borderRadius: 12 }}
+        style={{ height: 170, width: 170, borderRadius: 12 }}
         source={{ uri: countryImage }}
         resizeMode="cover"
       />

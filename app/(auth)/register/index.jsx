@@ -13,6 +13,9 @@ import { useDispatch } from "react-redux";
 
 const Register = () => {
   const [isModalVisible, setModalVisible] = useState(false);
+  const [visiblePassword, setVisiblePassword] = useState(false);
+  const [visibleConfirmedPassword, setVisibleConfirmedPassword] =
+    useState(false);
   const [formData, setFormData] = useState({
     name: "",
     lastname: "",
@@ -77,6 +80,14 @@ const Register = () => {
     }
   };
 
+  const handlePasswordVisibility = () => {
+    setVisiblePassword(!visiblePassword);
+  };
+
+  const handlePasswordConfirmedVisibility = () => {
+    setVisibleConfirmedPassword(!visibleConfirmedPassword);
+  };
+
   return (
     <View style={styles.signUpContainer}>
       <View>
@@ -124,28 +135,30 @@ const Register = () => {
           color={colorsDefault.brown.default}
           icon={
             <AntDesign
-              name="lock1"
+              name={!visiblePassword ? "lock1" : "unlock"}
               size={24}
               color={colorsDefault.brown.default}
+              onPress={handlePasswordVisibility}
             />
           }
           value={formData.password}
           onChangeValue={(value) => handleChange("password", value)}
-          secureTextEntry
+          secureTextEntry={!visiblePassword}
         />
         <FormInput
           label="Confirm password"
           color={colorsDefault.brown.default}
           icon={
             <AntDesign
-              name="lock1"
+              name={!visibleConfirmedPassword ? "lock1" : "unlock"}
               size={24}
               color={colorsDefault.brown.default}
+              onPress={handlePasswordConfirmedVisibility}
             />
           }
           value={formData.confirmPassword}
           onChangeValue={(value) => handleChange("confirmPassword", value)}
-          secureTextEntry
+          secureTextEntry={!visibleConfirmedPassword}
         />
       </View>
       <View style={styles.signUpButtonContainer}>

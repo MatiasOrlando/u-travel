@@ -22,8 +22,8 @@ const FormInput = ({
           style={{
             position: "absolute",
             top: 17,
-            height: additionalText === "emailIcon" ? 17 : 22,
-            width: additionalText === "emailIcon" ? 23 : 18,
+            height: 22,
+            width: 18,
           }}
           source={icon}
         />
@@ -37,15 +37,12 @@ const FormInput = ({
       <Text style={{ color, fontSize: 18 }}>{label}</Text>
       <View style={{ position: "relative" }}>
         <TextInput
-          style={[
-            styles.textInputField,
-            { paddingTop: additionalText === "emailIcon" ? 6 : 13 },
-          ]}
+          style={[styles.textInputField, { paddingTop: 13 }]}
           onChangeText={onChangeValue}
           {...rest}
         />
         {renderIcon()}
-        {additionalText && additionalText != "emailIcon" && (
+        {additionalText && (
           <Text style={{ textAlign: "right", paddingTop: 5, color }}>
             {additionalText}
           </Text>
