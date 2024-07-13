@@ -3,6 +3,9 @@ import imageHome from "../assets/images/home.png";
 import { colorsDefault } from "@/constants/Colors";
 import { Link, router } from "expo-router";
 import SocialIcons from "@/components/SocialIcons";
+import ButtonPrimary from "@/components/ButtonPrimary";
+import { en, registerTranslation } from "react-native-paper-dates";
+registerTranslation("en", en);
 
 export default function HomeScreen() {
   return (
@@ -16,12 +19,12 @@ export default function HomeScreen() {
             ¡Welcome to U travel!
           </Text>
           <View style={{ marginTop: 20, width: "100%", padding: 30 }}>
-            <Pressable
+            <ButtonPrimary
               style={{
-                backgroundColor: colorsDefault.green.primary,
                 alignItems: "center",
-                padding: 20,
                 borderRadius: 8,
+                paddingVertical: 7,
+                width: 335,
               }}
               onPress={() =>
                 router.push({
@@ -29,16 +32,9 @@ export default function HomeScreen() {
                   params: { type: "register" },
                 })
               }
-            >
-              <Text
-                style={{
-                  fontSize: 20,
-                  color: "white",
-                }}
-              >
-                Sign Up
-              </Text>
-            </Pressable>
+              title="Sign Up"
+              fontSize={20}
+            />
             <Pressable
               style={{
                 backgroundColor: "white",
@@ -60,7 +56,7 @@ export default function HomeScreen() {
             >
               <Text
                 style={{
-                  fontSize: 20,
+                  fontSize: 18,
                   color: "black",
                 }}
               >

@@ -1,5 +1,6 @@
 import authReducer from "@/features/Auth/AuthSlice";
 import budgetFilterReducer from "@/features/BudgetFilter/BudgetFilterSlice";
+import datesTravelSlice from "@/features/DatesTravel/DatesTravelSlice";
 import travelersCompanySlice from "@/features/TravelersCompany/TravelersCompanySlice";
 import { authApi } from "@/services/authServices";
 import { shopApi } from "@/services/shopServices";
@@ -11,6 +12,7 @@ const store = configureStore({
     auth: authReducer,
     budgetFilter: budgetFilterReducer,
     travelersCompanyFilter: travelersCompanySlice,
+    datesPicker: datesTravelSlice,
     [shopApi.reducerPath]: shopApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
   },

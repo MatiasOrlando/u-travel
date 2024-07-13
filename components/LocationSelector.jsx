@@ -7,10 +7,7 @@ import { colorsDefault } from "@/constants/Colors";
 import MapPreview from "./MapPreview";
 
 import * as Location from "expo-location";
-import {
-  useGetLocationQuery,
-  usePostLocationMutation,
-} from "@/services/shopServices";
+import { usePostLocationMutation } from "@/services/shopServices";
 import { router } from "expo-router";
 
 const LocationSelector = () => {
@@ -18,7 +15,6 @@ const LocationSelector = () => {
   const [address, setAddres] = useState("");
   const [error, setError] = useState("");
   const { localId } = useSelector((state) => state.auth.value);
-  const { data: locationUser } = useGetLocationQuery(localId);
 
   const [triggerPostLocation, result] = usePostLocationMutation();
 

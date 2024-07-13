@@ -8,6 +8,7 @@ import { useGetCityByIdQuery } from "@/services/shopServices";
 import Interests from "@/components/Interests";
 import TravelingCompany from "@/components/TravelingCompany";
 import AgeTravelers from "@/components/AgeTravelers";
+import DateSelector from "@/components/DateSelector";
 
 const CityDetail = () => {
   const { id } = useLocalSearchParams();
@@ -38,6 +39,9 @@ const CityDetail = () => {
             <Text style={styles.filterOptionsTitle}>
               Create my ideal itinerary
             </Text>
+            <FilterCard>
+              <DateSelector />
+            </FilterCard>
             <RangeSliderCustom />
             <FilterCard>
               <TravelingCompany />
@@ -97,7 +101,7 @@ const styles = StyleSheet.create({
     bottom: 90,
     paddingLeft: 50,
     backgroundColor: "rgba(194, 172, 147, 0.8)",
-    width: "50%",
+    width: "55%",
     left: 0,
     paddingVertical: 5,
   },

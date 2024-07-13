@@ -1,7 +1,6 @@
 import { StyleSheet, Text, View, Image, Pressable } from "react-native";
 import React, { useEffect, useState } from "react";
 import * as ImagePicker from "expo-image-picker";
-import { colorsDefault } from "@/constants/Colors";
 import { useDispatch, useSelector } from "react-redux";
 import {
   useGetProfileImageQuery,
@@ -77,28 +76,10 @@ const ImageSelector = () => {
             resizeMode="cover"
             source={{ uri: image }}
           />
-          <Pressable
-            onPress={pickImage}
-            style={({ pressed }) => [
-              styles.addImageBtn,
-              {
-                opacity: pressed ? 0.6 : 1,
-              },
-            ]}
-          >
-            <Text style={{ color: "#fff" }}>Take new Photo</Text>
-          </Pressable>
-          <Pressable
-            style={({ pressed }) => [
-              styles.addImageBtn,
-              {
-                opacity: pressed ? 0.6 : 1,
-              },
-            ]}
-            onPress={confirmImage}
-          >
-            <Text style={{ color: "#fff" }}>Confirm photo</Text>
-          </Pressable>
+          <View style={{ gap: 20 }}>
+            <ButtonPrimary onPress={pickImage} title="Take new Photo" />
+            <ButtonPrimary onPress={confirmImage} title="Confirm photo" />
+          </View>
         </>
       ) : (
         <>
@@ -115,12 +96,7 @@ const ImageSelector = () => {
           </View>
           <ButtonPrimary
             onPress={pickImage}
-            style={({ pressed }) => [
-              styles.addImageBtn,
-              {
-                opacity: pressed ? 0.6 : 1,
-              },
-            ]}
+            style={{ marginTop: 30 }}
             title={image ? "Edit profile picture" : "Add profile picture"}
           />
         </>
@@ -150,15 +126,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     alignItems: "center",
     justifyContent: "center",
-  },
-  addImageBtn: {
-    backgroundColor: colorsDefault.green.primary,
-    height: 50,
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 30,
-    borderRadius: 10,
-    width: "100%",
   },
   addImgText: {
     color: "white",

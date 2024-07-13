@@ -2,14 +2,14 @@ import { Pressable, StyleSheet, Text } from "react-native";
 import React from "react";
 import { colorsDefault } from "../constants/Colors";
 
-const ButtonPrimary = ({ title, handlePress, ...rest }) => {
+const ButtonPrimary = ({ title, handlePress, style, ...rest }) => {
   return (
     <Pressable
-      style={{
-        backgroundColor: colorsDefault.green.primary,
-        borderRadius: 10,
-        width: "75%",
-      }}
+      style={({ pressed }) => [
+        styles.btnPrimary,
+        style,
+        { opacity: pressed ? 0.6 : 1 },
+      ]}
       onPress={handlePress}
       {...rest}
     >
@@ -29,4 +29,10 @@ const ButtonPrimary = ({ title, handlePress, ...rest }) => {
 
 export default ButtonPrimary;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  btnPrimary: {
+    backgroundColor: colorsDefault.green.primary,
+    borderRadius: 10,
+    width: 300,
+  },
+});

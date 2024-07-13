@@ -38,7 +38,12 @@ const Profile = () => {
         }}
       >
         <ImageSelector />
-        <View style={{ width: "100%", alignItems: "center" }}>
+        <View
+          style={{
+            width: "100%",
+            alignItems: "center",
+          }}
+        >
           <ButtonPrimary
             title="Set my address"
             handlePress={() => router.push("/profile/location")}

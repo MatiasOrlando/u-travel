@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import Slider from "@react-native-community/slider";
 import { colorsDefault } from "@/constants/Colors";
 import FilterCard from "./FilterCard";
@@ -23,10 +23,12 @@ const RangeSliderCustom = () => {
             marginHorizontal: "auto",
           }}
           minimumValue={500}
-          maximumValue={3000}
+          maximumValue={3500}
           value={sliderBudgetValue}
           step={100}
           onValueChange={(value) => dispatch(setBudgetValue(value))}
+          minimumTrackTintColor={"rgba(194, 172, 147, 0.8)"}
+          maximumTrackTintColor={"rgba(194, 172, 147, 0.8)"}
         />
         <Text style={styles.priceRange}>{`$500 - $${sliderBudgetValue}`}</Text>
       </View>

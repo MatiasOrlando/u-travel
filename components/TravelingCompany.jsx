@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Pressable, Image } from "react-native";
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setTravelersCompany } from "@/features/TravelersCompany/TravelersCompanySlice";
 

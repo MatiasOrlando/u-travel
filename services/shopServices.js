@@ -9,14 +9,6 @@ export const shopApi = createApi({
     getCountries: builder.query({
       query: () => `countries.json`,
     }),
-    getCitiesByCountryId: builder.query({
-      query: (countryId) =>
-        `citiesItineraries.json?orderBy="countryId"&equalTo=${countryId}`,
-      transformResponse: (res) => {
-        const transformedResponse = Object.values(res);
-        return transformedResponse;
-      },
-    }),
     getCountryById: builder.query({
       query: (id) => `countries.json?orderBy="id"&equalTo=${id}`,
       transformResponse: (res) => {
@@ -24,9 +16,16 @@ export const shopApi = createApi({
         return transformedResponse;
       },
     }),
+    getCitiesByCountryId: builder.query({
+      query: (countryId) =>
+        `cities.json?orderBy="countryId"&equalTo=${countryId}`,
+      transformResponse: (res) => {
+        const transformedResponse = Object.values(res);
+        return transformedResponse;
+      },
+    }),
     getCityById: builder.query({
-      query: (city) =>
-        `citiesItineraries.json?orderBy="city"&equalTo="${city}"`,
+      query: (city) => `cities.json?orderBy="city"&equalTo="${city}"`,
       transformResponse: (res) => {
         const [transformedResponse] = Object.values(res);
         return transformedResponse;
